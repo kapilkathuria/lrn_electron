@@ -19,4 +19,10 @@ Made by github-- github created Atom Code Editor using Elctron
 
 Most commonly used app on github --> Javascript --> hence github decided to use JS to create a desktop app
 
+## Project to createad in this tutorial
+select a video file, get length of video file.
+
+## Electron CLI
+
+
 

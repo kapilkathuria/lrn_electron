@@ -1,0 +1,23 @@
+{
+  "name": "electr",
+  "version": "1.0.0",
+  "description": "create desktop apps with web tech like javascript, node, html and css",
+  "main": "index.js",
+  "scripts": {
+    "electron": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kapilkathuria/lrn_electron.git"
+  },
+  "author": "kapil kathuria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kapilkathuria/lrn_electron/issues"
+  },
+  "homepage": "https://github.com/kapilkathuria/lrn_electron#readme",
+  "dependencies": {
+    "electron": "^10.1.5"
+  }
+}
