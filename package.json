@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/kapilkathuria/lrn_electron#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "electron": "^10.1.5"
+  },
+  "devDependencies": {
+    "electron-reload": "^1.5.0"
   }
 }
