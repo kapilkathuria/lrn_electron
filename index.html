@@ -10,4 +10,20 @@
         </div>
         <button type="submit">Get Info</button>
     </form>
+
+    <script>
+        // using require here is quite strange - usually require doesn' work with browser console
+        //  buut require works with electron console
+        const electron = require('electron');
+
+        // don't allow default  submit - event.preventDefault();
+        // get the info about file with querySelector
+        // we are going to ffmpeg cli to get info about video
+        document.querySelector('form').addEventListener('submit', (event)=> {
+            event.preventDefault();
+            const file = document.querySelector('input').files[0];
+
+            
+        });
+    </script>
 </body>
