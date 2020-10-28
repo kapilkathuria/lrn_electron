@@ -28,3 +28,21 @@ const { app, BrowserWindow } = electron;
 //  this required communication between index.html and index.js
 
 // IPC (Inter Process Communication): this helps with communication between index.html and index.js
+
+// so, we can use electron package in index.html as follows - see index.html as an example
+// using require here is quite strange - usually require doesn' work with browser console
+//  but require works with electron console
+const electron = require('electron');
+// this ipcRenderer helps us to cmmunicate with outside world
+const { ipcRenderer }  = electron;
+
+// so, here message has been sent to IPC 
+ipcRenderer.send('video:submit', path);
+
+// now IPC need to do what we need and return result to our app
+
+// object naming is bit weired and not uniform 
+// in first line bleow Main application is sending message to IPC
+// in second line IPC is returing results to main window
+// Electron  - ipcMain.on  <-------> ipcRenderer.send  - Main Window
+// Electron  - mainWindowwebcontents.send  <-------> ipcRenderer.on  - Main Window

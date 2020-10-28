@@ -13,17 +13,25 @@
 
     <script>
         // using require here is quite strange - usually require doesn' work with browser console
-        //  buut require works with electron console
+        //  but require works with electron console
         const electron = require('electron');
+        // this ipcRenderer helps us to cmmunicate with outside world
+        const { ipcRenderer }  = electron;
 
         // don't allow default  submit - event.preventDefault();
         // get the info about file with querySelector
         // we are going to ffmpeg cli to get info about video
         document.querySelector('form').addEventListener('submit', (event)=> {
             event.preventDefault();
-            const file = document.querySelector('input').files[0];
-
+            const { path } = document.querySelector('input').files[0];
             
+            // send message to IPC
+            // below event in inverted comma is name of our event - which can be anything
+            // author prefer to use noun:verb i.e. video:submit
+            // so, here message has been sent to IPC 
+            ipcRenderer.send('video:submit', path);
+
+            // now IPC need to do what we need and return result to our app
         });
     </script>
 </body>

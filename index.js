@@ -2,6 +2,11 @@
 
 const electron = require('electron');
 const path = require('path');
+const Ffmpeg = require('fluent-ffmpeg');
+
+
+const { app, BrowserWindow, ipcMain, mainWindowwebcontents } = electron;
+
 require('dotenv').config();
 
 const env = process.env.NODE_ENV || 'development';
@@ -15,7 +20,6 @@ if (env === 'development') {
 
 // electron starts --> app process is  created --> app ready events --> app closes down
 // BrowserWindow: will start new Browser Window in electron
-const { app, BrowserWindow } = electron;
 
 app.on('ready', () => {
   // do something
@@ -29,4 +33,11 @@ app.on('ready', () => {
   // mainWindow.loadURL('https://www.google.com/');
   // mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.loadFile('index.html');
+
+  // let's recieved message from main window in IPC
+  ipcMain.on('video:submit', (event, path) => {
+    Ffmpeg.ffprobe(path, (err, metadata) => {
+      console.log(metadata);
+    });
+  });
 });
