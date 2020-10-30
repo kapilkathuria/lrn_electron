@@ -11,6 +11,8 @@
         <button type="submit">Get Info</button>
     </form>
 
+    <h1 id="result"></h1>
+
     <script>
         // using require here is quite strange - usually require doesn' work with browser console
         //  but require works with electron console
@@ -30,8 +32,12 @@
             // author prefer to use noun:verb i.e. video:submit
             // so, here message has been sent to IPC 
             ipcRenderer.send('video:submit', path);
-
             // now IPC need to do what we need and return result to our app
         });
+
+        ipcRenderer.on('video:metadata',(event, duration) => {
+            document.querySelector('#result').innerHTML = `Video is ${duration} seconds`;
+        })
+
     </script>
 </body>
